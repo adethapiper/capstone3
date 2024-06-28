@@ -1,0 +1,104 @@
+/* Posts Page CSS */
+
+/* Posts Page CSS */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    width: 100%;
+    background-color: #007bff;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.header .profile-btn,
+.header .logout-btn {
+    background-color: white;
+    color: #007bff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.header .profile-btn:hover,
+.header .logout-btn:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+.container {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 80%;
+    max-width: 600px;
+    min-width: 300px;
+    margin: 50px auto;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"], textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: white;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#result {
+    margin-top: 20px;
+}
+
+#posts {
+    margin-top: 20px;
+}
+
+.post {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    text-align: left;
+}

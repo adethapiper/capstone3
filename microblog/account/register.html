@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Page-specific CSS -->
+    <link rel="stylesheet" href="register.css" />
+
+    <title>Register - Microblog Network</title>
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <div class="form-section">
+          <h1>Register</h1>
+          <p>Please enter your details to create an account</p>
+          <form id="register">
+            <div class="form-group">
+              <label for="fullName">Full Name</label>
+              <input type="text" id="fullName" placeholder="Full Name" required />
+            </div>
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" id="username" minlength="3" placeholder="Username" required />
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" minlength="3" placeholder="Password" required />
+            </div>
+            <button id="registerButton" type="submit">Sign Up</button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      "use strict";
+      document.addEventListener("DOMContentLoaded", () => {
+        const registerButton = document.querySelector("#registerButton");
+
+        registerButton.addEventListener("click", (event) => {
+          event.preventDefault();
+
+          let usernameCreated = document.querySelector("#username").value;
+          let passwordCreated = document.querySelector("#password").value;
+          let fullNameCreated = document.querySelector("#fullName").value;
+
+          if (!usernameCreated || !passwordCreated || !fullNameCreated) {
+            alert("All fields are required.");
+            return;
+          }
+
+          let createNewUser = {
+            fullName: fullNameCreated,
+            username: usernameCreated,
+            password: passwordCreated,
+          };
+
+          let requestInit = {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(createNewUser),
+          };
+
+          function saveNewData() {
+            fetch("http://microbloglite.us-east-2.elasticbeanstalk.com/api/users", requestInit)
+              .then((response) => {
+                if (response.ok) {
+                  window.location.href = "login.html";
+                } else {
+                  return response.json().then((data) => {
+                    throw new Error(data.message || "Registration failed");
+                  });
+                }
+              })
+              .catch((error) => {
+                alert("Registration failed: " + error.message);
+              });
+          }
+
+          saveNewData();
+        });
+      });
+    </script>
+  </body>
+</html>
