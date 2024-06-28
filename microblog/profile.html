@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile - Microblog Network</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <style>
+    /* Your CSS styles here */
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <h1><a href="../posts/posts.html">Microblog Network</a></h1>
+    </div>
+    <div class="header-center">
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search posts by username...">
+        <button id="searchButton">Search</button>
+      </div>
+    </div>
+    <div class="header-right">
+      <nav>
+        <a href="../profile.html">Profile</a>
+        <a href="#" id="logoutLink">Logout</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="sidebar">
+      <div class="avatar"><img src="https://via.placeholder.com/80" alt="Avatar"></div>
+      <div class="usernameSidebarDisplay">Username</div>
+      <div class="totalLikes">Total Likes: <span id="totalLikesCount">0</span></div>
+      <div class="totalPosts">Total Posts: <span id="totalPostsCount">0</span></div>
+      <div class="settings">
+        <button id="editProfileButton">Edit Profile</button>
+        <button>Add Social Link</button>
+      </div>
+    </div>
+    <div id="profileContainer">
+      <div class="profileHeader">
+        <div class="fullNameContainer">
+          <div class="fullName">Full Name</div>
+          <div class="username">@username</div>
+        </div>
+      </div>
+      <div class="profileInfo">
+        <div class="bio">User bio</div>
+      </div>
+    </div>
+    <div id="userPostsContainer">
+      <h2>User Posts</h2>
+      <div id="userPosts"></div>
+    </div>
+  </main>
+  <footer>&copy; 2024 Microblog Network</footer>
+  <script src="../account/auth.js"></script>
+  <script>
+    window.onload = function () {
+      const loginData = getLoginData();
+      const token = loginData.token;
+      const apiBaseURL = "http://microbloglite.us-east-2.elasticbeanstalk.com/api";
+
+      // DOM elements
+      const profileContainer = document.getElementById("profileContainer");
+      const totalLikesCount = document.getElementById("totalLikesCount");
+      const totalPostsCount = document.getElementById("totalPostsCount");
+      const editProfileButton = document.getElementById("editProfileButton");
+      const searchButton = document.getElementById("searchButton");
+      const searchInput = document.getElementById("searchInput");
+      const logoutLink = document.getElementById("logoutLink");
+
+      // Load user profile
+      function loadUserProfile() {
+        fetch(`${apiBaseURL}/users/${loginData.username}`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
+        .then(response => response.json())
+        .then(user => {
+          const fullName = document.querySelector(".fullName");
+          const username = document.querySelector(".username");
+          const bio = document.querySelector(".bio");
+
+          fullName.textContent = user.fullName;
+          username.textContent = `@${user.username}`;
+          bio.textContent = user.bio || "No bio available.";
+        })
+        .catch(error => {
+          console.error("Error fetching user data:", error);
+          profileContainer.innerHTML = "<p>Error loading profile data.</p>";
+        });
+      }
+
+      // Load user posts
+      function loadUserPosts() {
+        fetch(`${apiBaseURL}/posts?username=${loginData.username}`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
+        .then(response => response.json())
+        .then(posts => {
+          const userPostsContainer = document.getElementById("userPosts");
+          if (posts.length === 0) {
+            userPostsContainer.innerHTML = "<p>No posts available.</p>";
+            return;
+          }
+          posts.forEach(post => {
+            const postDiv = document.createElement("div");
+            postDiv.className = "userPost";
+            postDiv.innerHTML = `
+              <div class="postHeader">@${post.username} <span>${new Date(post.createdAt).toLocaleString()}</span></div>
+              <div class="postContent">${post.text}</div>
+            `;
+            userPostsContainer.appendChild(postDiv);
+          });
+        })
+        .catch(error => {
+          console.error("Error fetching user posts:", error);
+          const userPostsContainer = document.getElementById("userPosts");
+          userPostsContainer.innerHTML = "<p>Error loading posts.</p>";
+        });
+      }
+
+      // Event listeners
+      editProfileButton.addEventListener("click", () => {
+        // Implement profile editing functionality
+      });
+
+      searchButton.addEventListener("click", () => {
+        const username = searchInput.value.trim();
+        if (username) {
+          // Implement search functionality
+        }
+      });
+
+      logoutLink.addEventListener("click", () => {
+        window.localStorage.removeItem("login-data");
+        window.location.replace("../account/login.html");
+      });
+
+      // Initial loading
+      loadUserProfile();
+      loadUserPosts();
+    };
+  </script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(45deg, #ff9a9e, #fad0c4); /* Gradient pink background */
+    background: linear-gradient(135deg, #00c6fb, #005bea); /* Gradient blue background */
     height: 100vh;
     display: flex;
     justify-content: center;

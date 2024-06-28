@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome - Microblog Network</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f0f0f0; /* Light gray background */
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        color: #333; /* Dark gray text color */
+        padding: 20px;
+        box-sizing: border-box;
+      }
+      .container {
+        text-align: center;
+        max-width: 1200px;
+        width: 100%;
+      }
+      .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      h1 {
+        font-size: 36px;
+        margin-bottom: 10px;
+        color: #333; /* Dark gray text color */
+      }
+      p {
+        font-size: 18px;
+        margin-bottom: 30px;
+        color: #555; /* Medium gray text color */
+      }
+      .buttons {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 40px;
+        flex-wrap: wrap;
+      }
+      .login-btn {
+        background-color: #0079d3; /* Blue background */
+      }
+      .register-btn {
+        background-color: #4caf50; /* Green background */
+      }
+      .buttons a {
+        text-decoration: none;
+        padding: 15px 30px;
+        border-radius: 30px;
+        color: #fff;
+        font-size: 18px;
+        transition: background-color 0.3s;
+        margin: 10px 15px;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow */
+      }
+      .buttons a:hover {
+        opacity: 0.8; /* Reduced opacity on hover */
+      }
+      .login-btn:hover {
+        background-color: #005bb5; /* Darker blue on hover */
+      }
+      .register-btn:hover {
+        background-color: #45a049; /* Darker green on hover */
+      }
+      .features {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      .features h2 {
+        font-size: 28px;
+        color: #333; /* Dark gray text color */
+      }
+      .features p {
+        max-width: 800px;
+        margin: 20px auto;
+        line-height: 1.6;
+        font-size: 18px;
+        color: #555; /* Medium gray text color */
+      }
+      .features .feature-list {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      .features .feature {
+        background-color: #fff; /* White background */
+        padding: 20px;
+        border-radius: 10px;
+        width: calc(33% - 20px);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Light shadow */
+        text-align: left;
+        min-width: 200px;
+      }
+      .features .feature i {
+        font-size: 40px;
+        margin-bottom: 10px;
+        color: #0079d3; /* Blue icon color */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="content">
+        <h1>Welcome to Microblog Network</h1>
+        <p>Select an option to continue:</p>
+        <div class="buttons">
+          <a href="login.html" class="login-btn"
+            ><i class="fas fa-sign-in-alt"></i>&nbsp;Login</a
+          >
+          <a href="register.html" class="register-btn"
+            ><i class="fas fa-user-plus"></i>&nbsp;Register</a
+          >
+        </div>
+        <div class="features">
+          <h2>Why Choose Microblog Network?</h2>
+          <p>
+            Our platform offers a range of features designed to enhance your
+            blogging experience. Whether you're here to share your thoughts,
+            connect with others, or stay informed, we have something for
+            everyone.
+          </p>
+          <div class="feature-list">
+            <div class="feature">
+              <i class="fas fa-rocket"></i>
+              <h4>Fast and Reliable</h4>
+              <p>
+                Our platform is optimized for speed and reliability, ensuring a
+                seamless experience.
+              </p>
+            </div>
+            <div class="feature">
+              <i class="fas fa-mobile-alt"></i>
+              <h4>Mobile Friendly</h4>
+              <p>
+                Access your account and stay connected on the go with our
+                mobile-friendly design.
+              </p>
+            </div>
+            <div class="feature">
+              <i class="fas fa-lock"></i>
+              <h4>Secure</h4>
+              <p>
+                Your data is safe with us. We prioritize your privacy and
+                security above all else.
+              </p>
+            </div>
+            <div class="feature">
+              <i class="fas fa-comment-alt"></i>
+              <h4>Engaging Community</h4>
+              <p>
+                Interact with a vibrant community of bloggers and readers. Share
+                ideas and collaborate effortlessly.
+              </p>
+            </div>
+            <div class="feature">
+              <i class="fas fa-pen-nib"></i>
+              <h4>Customizable Blogging Experience</h4>
+              <p>
+                Personalize your blog with themes, layouts, and widgets. Express
+                yourself creatively.
+              </p>
+            </div>
+            <div class="feature">
+              <i class="fas fa-headset"></i>
+              <h4>Dedicated Support</h4>
+              <p>
+                24/7 support available. Get assistance whenever you need it.
+                We're here to help.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

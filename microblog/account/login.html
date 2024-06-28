@@ -1,57 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Global CSS (CSS rules you want applied to all pages) -->
-    <link rel="stylesheet" href="./global.css" />
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="./global.css">
 
-    <!-- Page-specific CSS -->
-    <link rel="stylesheet" href="./login.css" />
+  <!-- Page-specific CSS -->
+  <link rel="stylesheet" href="./login.css">
 
-    <title>Login</title>
+  <title>Login</title>
 
-    <!-- Run BEFORE page is finished loading (before window.onload - don't add the `defer` attribute): -->
-    <script src="auth.js"></script>
-    <script>
-      if (isLoggedIn() === true) {
+  <!-- Check login status -->
+  <script src="auth.js"></script>
+  <script>
+    // Function to redirect user if logged in
+    function redirectIfLoggedIn() {
+      if (isLoggedIn()) {
         window.location.replace("../posts/posts.html");
-      } else {
-        alert("😥 User Not Found 😥")
       }
-    </script>
-  </head>
-  <body>
-    <header></header>
+    }
 
-    <main>
-      <h1>Login</h1>
-      <form id="login">
-        <div>
-          <label for="username">Username</label>
-          <input type="text" id="username" minlength="3" />
-        </div>
+    // Redirect on load
+    redirectIfLoggedIn();
+  </script>
+</head>
+<body>
+  <header></header>
 
-        <div class="password-container">
-          <label for="password">Password</label>
-          <input type="password" id="password" minlength="3" />
-          <button type="button" id="togglePassword">Show</button>
-        </div>
+  <main>
+    <h1>Login</h1>
+    <form id="login">
+      <div>
+        <label for="username">Username</label>
+        <input type="text" id="username" minlength="3" required>
+      </div>
 
-        <button id="loginButton" type="submit">Login</button>
-        <div>
-          <a href="">Forgot password?</a>
-        </div>
+      <div class="password-container">
+        <label for="password">Password</label>
+        <input type="password" id="password" minlength="3" required>
+        <button type="button" id="togglePassword">Show</button>
+      </div>
 
-        <p>Don't have an account with Microblog? <a id="SignUpLink" href="register.html">Sign Up</a></p>
-      </form>
-    </main>
+      <button id="loginButton" type="submit">Login</button>
+      <div>
+        <a href="#">Forgot password?</a>
+      </div>
 
-    <footer></footer>
+      <p>Don't have an account with Microblog? <a id="SignUpLink" href="register.html">Sign Up</a></p>
+    </form>
+  </main>
 
-    <!-- Page-specific code -->
-    <script src="login.js"></script>
-  </body>
+  <footer></footer>
+
+  <!-- Page-specific JavaScript -->
+  <script src="login.js"></script>
+</body>
 </html>
